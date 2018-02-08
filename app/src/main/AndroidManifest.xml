@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.remybarbosa.fdjcleanarchi">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name=".app.FdjCleanArchiApplication">
-        <activity android:name=".article.ArticlesActivity">
+
+        <activity android:name=".article.ArticlesActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,7 +22,12 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".article.ArticleActivity"/>
+        <activity android:name=".article.ArticleActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".article.WebArticleActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
     </application>
 
 </manifest>

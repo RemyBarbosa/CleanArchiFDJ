@@ -18,20 +18,13 @@ import dagger.android.ContributesAndroidInjector;
 
 
 @Module
-public abstract class ArticleModule {
+public abstract class ArticlesModule {
 
     @FragmentScoped
     @ContributesAndroidInjector
-    abstract ArticleFragment articleFragment();
+    abstract ArticlesFragment articlesFragment();
 
     @ActivityScoped
     @Binds
-    abstract ArticleContract.Presenter articlePresenter(ArticlePresenter presenter);
-
-
-    @Provides
-    @ActivityScoped
-    static String provideArticleLink(ArticleActivity activity) {
-        return activity.getIntent().getStringExtra(ArticleActivity.EXTRA_ARTICLE_LINK);
-    }
+    abstract ArticlesContract.Presenter articlesPresenter(ArticlesPresenter presenter);
 }

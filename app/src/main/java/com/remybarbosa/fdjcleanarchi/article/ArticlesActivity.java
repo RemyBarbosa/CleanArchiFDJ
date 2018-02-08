@@ -24,13 +24,13 @@ public class ArticlesActivity extends DaggerAppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        ArticlesFragment taskDetailFragment = (ArticlesFragment) getSupportFragmentManager()
+        ArticlesFragment articlesFragment = (ArticlesFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.contentFrame);
 
-        if (taskDetailFragment == null) {
-            taskDetailFragment = injectedFragment;
+        if (articlesFragment == null) {
+            articlesFragment = injectedFragment;
             ActivityUtils.addFragmentToActivity(getSupportFragmentManager(),
-                    taskDetailFragment, R.id.contentFrame);
+                    articlesFragment, R.id.contentFrame);
         }
 
     }

@@ -2,10 +2,13 @@ package com.remybarbosa.fdjcleanarchi.article;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.remybarbosa.fdjcleanarchi.R;
 import com.remybarbosa.fdjcleanarchi.app.di.annotation.ActivityScoped;
@@ -30,7 +33,8 @@ public class ArticlesFragment extends DaggerFragment implements ArticlesContract
     @Inject
     ArticlesContract.Presenter mPresenter;
 
-    private TextView mArticleDetailView;
+    private RecyclerView mArticlesRecyclerView;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Inject
     public ArticlesFragment() {
@@ -44,7 +48,8 @@ public class ArticlesFragment extends DaggerFragment implements ArticlesContract
 
 
     private void bindViews(View fragmentView) {
-        mArticleDetailView = fragmentView.findViewById(R.id.article_detail);
+        mArticlesRecyclerView = fragmentView.findViewById(R.id.articles);
+        mSwipeRefreshLayout = fragmentView.findViewById(R.id.swipe_refresh_layout);
     }
 
     @Override
@@ -67,6 +72,16 @@ public class ArticlesFragment extends DaggerFragment implements ArticlesContract
 
     @Override
     public void showArticles(List<ArticleViewModel> articleViewModels) {
+        ArticleAdapter articleAdapter = new ArticleAdapter(articleViewModels);
+        articleAdapter.setListener(link -> ArticleActivity.start(getContext(), link));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        mArticlesRecyclerView.setLayoutManager(layoutManager);
+        mArticlesRecyclerView.setAdapter(articleAdapter);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mSwipeRefreshLayout.getContext(),
+                layoutManager.getOrientation());
+        mArticlesRecyclerView.addItemDecoration(dividerItemDecoration);
 
+        mSwipeRefreshLayout.setOnRefreshListener(() -> mPresenter.initView());
+        mSwipeRefreshLayout.setRefreshing(false);
     }
 }

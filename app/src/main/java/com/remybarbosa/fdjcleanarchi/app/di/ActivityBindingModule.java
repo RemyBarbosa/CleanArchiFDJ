@@ -4,6 +4,7 @@ import com.remybarbosa.fdjcleanarchi.app.di.annotation.ActivityScoped;
 import com.remybarbosa.fdjcleanarchi.article.ArticleActivity;
 import com.remybarbosa.fdjcleanarchi.article.ArticlesActivity;
 import com.remybarbosa.fdjcleanarchi.article.di.ArticleModule;
+import com.remybarbosa.fdjcleanarchi.article.di.ArticlesModule;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -16,6 +17,6 @@ public abstract class ActivityBindingModule {
     abstract ArticleActivity articleActivity();
 
     @ActivityScoped
-    @ContributesAndroidInjector(modules = ArticleModule.class)
+    @ContributesAndroidInjector(modules = ArticlesModule.class)
     abstract ArticlesActivity articlesActivity();
 }

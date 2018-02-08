@@ -14,7 +14,7 @@ public class ArticleMapper implements ArticleMapperContract {
 
     @Override
     public ArticleViewModel entityToViewModel(Article article) {
-        return new ArticleViewModel(article.getTitle(), article.getDescription(), article.getLink(), article.getPubDate().toString());
+        return new ArticleViewModel(article.getTitle(), article.getDescription(), article.getLink(), article.getPubDate().toString("EEEE, d MMM yyyy"));
     }
 
     @Override

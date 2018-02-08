@@ -4,6 +4,8 @@ import org.joda.time.DateTime;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
+import java.util.Date;
+
 @Root(name = "item", strict = false)
 public class RemoteArticle {
 

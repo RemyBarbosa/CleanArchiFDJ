@@ -2,6 +2,8 @@ package com.remybarbosa.fdjcleanarchi.entity;
 
 import org.joda.time.DateTime;
 
+import java.util.Date;
+
 /**
  * Created by remybarbosa on 08/02/2018.
  */

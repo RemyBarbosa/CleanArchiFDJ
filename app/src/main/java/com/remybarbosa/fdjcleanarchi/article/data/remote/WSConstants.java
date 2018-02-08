@@ -5,5 +5,5 @@ package com.remybarbosa.fdjcleanarchi.article.data.remote;
  */
 
 public class WSConstants {
-    static final String BASE_URL = "http://vogella.com/";
+    static final String BASE_URL = "http://www.lemonde.fr/";
 }
