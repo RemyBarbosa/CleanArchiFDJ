@@ -1,0 +1,17 @@
+apply plugin: 'com.android.library'
+apply from: '../config/android-common.gradle'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation project(':entity')
+    implementation project(':use-case')
+
+
+    implementation "com.squareup.retrofit2:converter-simplexml:$rootProject.ext.retrofitVersion"
+    implementation "io.reactivex.rxjava2:rxjava:$rootProject.ext.rxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.ext.rxAndroidVersion"
+
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.ext.daggerVersion"
+    implementation "com.google.dagger:dagger:$rootProject.ext.daggerVersion"
+}
